@@ -1,12 +1,12 @@
 import { Link } from "react-router";
-import { FaHome } from "react-icons/fa";
-import { MdPhotoLibrary } from 'react-icons/md'
+import { RiAiGenerate2 } from "react-icons/ri";
+import { FcGallery, FcGoogle, FcHome, } from "react-icons/fc";
 import { useContext } from "react";
 import Swal from 'sweetalert2'
-import authContext from "../context/AuthContext";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
-  const { googleSignIn, setUser, user, userSignOut } = useContext(authContext)
+  const { googleSignIn, setUser, user, userSignOut } = useContext(AuthContext)
 
   const handleSignIn = () => {
     googleSignIn()
@@ -25,7 +25,7 @@ const Navbar = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      cancelButtonText:"No",
+      cancelButtonText: "No",
       confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
@@ -36,6 +36,7 @@ const Navbar = () => {
 
         userSignOut().then(() => {
           // Sign-out successful.
+          setUser(null);
         }).catch((error) => {
           alert(error)
         });
@@ -50,12 +51,14 @@ const Navbar = () => {
         </div>
         <div className="">
           <ul className="menu menu-horizontal px-1 gap-2">
-            <li><Link to="/" className="border rounded-full"> <FaHome />  Home</Link></li>
-            <li><Link className="border rounded-full"><MdPhotoLibrary /> Gallary</Link></li>
-            <li><Link to="/generate" className="border rounded-full">Generate Images</Link></li>
+            <li><Link to="/" className="border rounded-full"> <FcHome className="text-lg" />  Home</Link></li>
+            <li><Link className="border rounded-full"><FcGallery className="text-lg" /> Gallary</Link></li>
+            <li><Link to="/generate" className="border rounded-full"> <RiAiGenerate2 className="text-lg" />Generate Images</Link></li>
             <li><Link className="border rounded-full">
               {
-                user ? <p onClick={handleSignOut}>Logout</p> : <p onClick={handleSignIn}>Login</p>
+                user ? <p onClick={handleSignOut}>Sign-Out</p>
+                  :
+                  <p onClick={handleSignIn} className="flex gap-2 items-center"><FcGoogle className="text-lg" />Sign-In</p>
               }
             </Link></li>
           </ul>
