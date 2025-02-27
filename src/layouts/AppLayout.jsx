@@ -1,15 +1,16 @@
 import { Outlet } from "react-router";
 import Navbar from "../components/Navbar";
 
-const Root = () => {
+const AppLayout = () => {
     return (
-        <div>
+        <div className="bg-black h-screen">
             <header>
-                <Navbar/>
+                <Navbar />
             </header>
             <Outlet/>
+
         </div>
     );
 };
 
-export default Root;
+export default AppLayout;
