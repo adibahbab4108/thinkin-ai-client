@@ -1,25 +1,50 @@
 import { FaArrowAltCircleUp } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { NavLink, Outlet } from "react-router";
 import GoogleLoginSystem from "../../components/SocialLogin/GoogleLoginSystem";
+import { useState } from "react";
 
 const Main = () => {
+    const [inputField, setInputField] = useState("Ask Anything")
     return (
-        <div className="main bg-gray-900 border  p-4 w-full flex flex-col">
+        <div className="main bg-gray-900 p-4 w-full flex flex-col">
             <div className="top grow-1">
                 <div className="flex justify-between">
                     <a href="">Thinkin AI</a>
-                    <GoogleLoginSystem/>
+                    <GoogleLoginSystem />
+                </div>
+                <div className="h-full my-2">
+                    <Outlet />
                 </div>
             </div>
             <div className="bottom ">
                 <div className="bg-gray-600 rounded-3xl py-2 px-4 max-w-2xl mx-auto flex justify-between">
                     <div className="w-full">
-                        <input type="text" placeholder="Ask anything" className="border-none outline-none px-2 w-full" />
+                        <input type="text" placeholder={`${inputField}`} className="border-none outline-none px-2 w-full" />
                         <div className="flex justify-between pt-4">
                             <nav className="space-x-1">
-                                <NavLink className={`py-1 px-3 rounded-full bg-gray-800 text-gray-400 hover:text-gray-300`}>Ask Anything</NavLink>
-                                <NavLink className="py-1 px-3 rounded-full bg-gray-800 text-gray-400 hover:text-gray-300">Geneate Image</NavLink>
-                                <NavLink className="py-1 px-3 rounded-full bg-gray-800 text-gray-400 hover:text-gray-300">Upload Image</NavLink>
+                                <NavLink
+                                    to="ask"
+                                    onClick={() => setInputField("Ask Anything (e.g. \"Will AI take Our Jobs?\" )")}
+                                    className={({ isActive }) =>
+                                        `${isActive ? "text-gray-300  bg-black" : "text-gray-500 bg-gray-800"} py-1 px-3 rounded-full hover:text-gray-200`
+                                    }
+                                >Ask Anything
+                                </NavLink>
+
+                                <NavLink
+                                    to="generate-image"
+                                    onClick={() => setInputField("Generate Image (e.g. \"A tiger stealing meat from a crowded market\")")}
+                                    className={({ isActive }) =>
+                                        `${isActive ? "text-gray-300  bg-black" : "text-gray-500 bg-gray-800"} py-1 px-3 rounded-full hover:text-gray-200`
+                                    }>Geneate Image</NavLink>
+                                <NavLink
+                                    to=""
+                                    className={({ isActive }) =>
+                                        `${isActive ? "text-gray-300  bg-black" : "text-gray-500 bg-gray-800"} py-1 px-3 rounded-full hover:text-gray-200`
+                                    }
+                                >
+                                    Upload Image
+                                </NavLink>
                             </nav>
                         </div>
                     </div>
