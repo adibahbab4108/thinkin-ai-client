@@ -1,14 +1,11 @@
-import { Outlet } from "react-router";
-import Navbar from "../components/Navbar";
+import Main from "./Main/Main";
+import Sidebar from "./Sidebar/Sidebar";
 
 const AppLayout = () => {
     return (
-        <div className="bg-black h-screen">
-            <header>
-                <Navbar />
-            </header>
-            <Outlet/>
-
+        <div className="bg-black h-screen flex">
+          <Sidebar/>
+          <Main/>
         </div>
     );
 };
