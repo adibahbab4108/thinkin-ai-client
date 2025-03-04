@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import authContext from "./AuthContext";
-import auth from "../firebase/firebase.config";
+import auth from "../config/firebase.config";
 import { useEffect, useState } from "react";
 
 const googleProvider = new GoogleAuthProvider();

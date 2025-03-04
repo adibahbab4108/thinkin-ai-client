@@ -9,7 +9,7 @@ const Banner = () => {
           <p className="py-6">
             Elevate your mind&apos;s potential with Thinkin AI&apos;s advanced intelligence. Explore, create, and innovate beyond boundaries
           </p>
-          <Link to="/generate" className="btn btn-primary">Get Started</Link>
+          <Link to="ask" className="btn btn-primary">Get Started</Link>
         </div>
       </div>
     </div>
