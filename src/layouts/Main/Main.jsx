@@ -1,10 +1,13 @@
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router";
 import GoogleLoginSystem from "../../components/SocialLogin/GoogleLoginSystem";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GeminiCotext } from "../../context/GeminiContext";
 
 const Main = () => {
     const [inputField, setInputField] = useState("Ask Anything")
+    const { setInput , onSent} = useContext(GeminiCotext)
+
     return (
         <div className="main bg-gray-900 p-4 w-full flex flex-col">
             <div className="top grow-1">
@@ -19,7 +22,7 @@ const Main = () => {
             <div className="bottom ">
                 <div className="bg-gray-600 rounded-3xl py-2 px-4 max-w-2xl mx-auto flex justify-between">
                     <div className="w-full">
-                        <input type="text" placeholder={`${inputField}`} className="border-none outline-none px-2 w-full" />
+                        <input onChange={(e) => setInput(e.target.value)} type="text" placeholder={`${inputField}`} className="border-none outline-none px-2 w-full h-13" />
                         <div className="flex justify-between pt-4">
                             <nav className="space-x-1">
                                 <NavLink
@@ -48,7 +51,7 @@ const Main = () => {
                             </nav>
                         </div>
                     </div>
-                    <div className="flex justify-center items-center ml-4">
+                    <div onClick={()=>onSent()} className="flex justify-center items-center ml-4">
                         <FaArrowAltCircleUp className=" text-2xl cursor-pointer" />
                     </div>
                 </div>

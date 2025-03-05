@@ -1,0 +1,9 @@
+.result{
+   
+}
+.result::-webkit-scrollbar{
+    display: none;
+}
+.loader{
+    
+}
